@@ -1,28 +1,9 @@
-FROM node:alpine
+FROM node:15
 
-# Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Install wget using apk (Alpine package manager)
-RUN apk add --no-cache wget
+COPY . .
 
-# Install Dockerize for service dependency management
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-
-# Copy package.json and package-lock.json first to leverage Docker layer caching
-COPY ./package*.json ./
-
-# Install application dependencies
-RUN npm install
-
-# Copy the application files
-COPY ./index.js .
-
-# Expose the application port
 EXPOSE 3000
 
-# Use Dockerize to wait for MySQL to be ready before starting the application
-CMD ["dockerize", "-wait", "tcp://db:3306", "-timeout", "20s", "node", "index.js"]
+CMD ["node","index.js"]
