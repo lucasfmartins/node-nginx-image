@@ -20,8 +20,8 @@ Todo o ambiente é gerenciado por meio de contêineres Docker, definidos no dock
 Clone o repositório:
 
 ```sh
-git clone <url-do-repositorio>
-cd <nome-do-repositorio>
+git clone [<url-do-repositorio>](https://github.com/lucasfmartins/node-nginx-image)
+cd node-nginx-image
 ```
 
 Inicie os contêineres: Execute o comando abaixo para subir os serviços:
