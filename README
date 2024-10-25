@@ -1,4 +1,4 @@
-## Desafio: NGINX como Proxy Reverso com Node.js e MySQL
+# Desafio: NGINX como Proxy Reverso com Node.js e MySQL
 Este projeto implementa um ambiente de contêineres utilizando Docker e Docker Compose para executar um serviço Node.js que se comunica com um banco de dados MySQL e é exposto ao usuário via um proxy reverso NGINX. O Node.js registra nomes em uma tabela do MySQL e exibe esses nomes em uma página HTML acessível via NGINX.
 
 ### Tecnologias Utilizadas
