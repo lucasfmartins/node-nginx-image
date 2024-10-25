@@ -12,6 +12,9 @@ services:
     tty: true
     ports:
       - "3000:3000"
+    volumes:
+      - ./node:/usr/src/app
+      - /usr/src/app/node_modules
     deploy:
       resources:
         limits:
