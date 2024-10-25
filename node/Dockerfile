@@ -1,5 +1,5 @@
 # Dockerfile de Desenvolvimento
-FROM node:latest
+FROM node:20-slim
 
 WORKDIR /usr/src/app
 
@@ -12,8 +12,10 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-# Copiar package.json para instalar dependências (usando cache)
-COPY ./package*.json ./
+COPY index.js package.json ./
+
+# # Copiar package.json para instalar dependências (usando cache)
+# COPY ./package*.json ./
 
 # Instalar dependências usando o registro público explicitamente
 RUN npm install

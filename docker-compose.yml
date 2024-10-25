@@ -6,7 +6,7 @@ services:
     build: 
       context: ./node
       dockerfile: Dockerfile.local
-    container_name: node-app
+    container_name: node
     image: lucasfmartins/node
     entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node index.js
     networks:
@@ -34,12 +34,12 @@ services:
     build: 
       context: ./nginx
       dockerfile: Dockerfile.prod
-    image: lucasfmartins/nginx:prod
-    container_name: nginx
+    # image: lucasfmartins/nginx:prod
+    # container_name: nginx
     networks: 
       - app-network
     ports: 
-      - "9000:80"
+      - "8080:80"
     depends_on:
       - node
   
