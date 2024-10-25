@@ -18,7 +18,8 @@ services:
           cpus: "0.1"
           memory: 50M
     depends_on:
-      - mysql-db
+      mysql-db:
+        condition: service_healthy
 
   nginx:
     build: 
@@ -39,6 +40,12 @@ services:
     tty: true
     volumes:
       - ./volumes/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1m30s
+      timeout: 10s
+      start_period: 10s
+      retries: 3
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
