@@ -1,7 +1,5 @@
-FROM nginx:latest
+FROM nginx:1.19.10-alpine  
 
-# COPIO a pasta html do meu computador para imagem
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080

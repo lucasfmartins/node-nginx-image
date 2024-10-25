@@ -27,6 +27,12 @@ cd <nome-do-repositorio>
 Inicie os contêineres: Execute o comando abaixo para subir os serviços:
 
 ```sh
+sudo docker-compose up -d
+```
+
+ou
+
+```sh
 sudo docker-compose up --build -d
 ```
 

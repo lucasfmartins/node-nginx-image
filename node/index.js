@@ -4,10 +4,10 @@ const app = express();
 const port = 3000;
 
 const config = {
-  host: 'db',
+  host: 'mysql-db',
   user: 'root',
-  password: 'rootpassword',
-  database: 'people_db',
+  password: 'root',
+  database: 'nodedb',
 };
 
 const connection = mysql.createConnection(config);
@@ -21,6 +21,8 @@ connection.query(`
 `);
 
 app.get('/', (req, res) => {
+  console.log(`Get resource`);
+  
   const name = `Full Cycle Rocks! name: ${Math.floor(Math.random() * 1000)}`;
 
   connection.query(`INSERT INTO people(name) values('${name}')`, (err) => {
